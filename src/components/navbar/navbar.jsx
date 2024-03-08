@@ -1,16 +1,16 @@
 const Navbar = () => {
     return (
         <>
-            <div className="h-24 bg-white flex max:md px-7 justify-between items-center">
+            <div className="h-24 bg-transparent flex max:md px-7 w-full justify-between absolute z-10 items-center">
                 <div className="left-portion">
                     <div className="logo flex align-middle">
-                        <div>
+                        <div> 
                             <img className="h-24 p-2" src="/logo.png" alt="" />
                         </div>
                     </div>
                 </div>
 
-                <div className="center-portion flex justify-center pe-20">
+                <div className="center-portion flex justify-center pe-0">
                     <div className="text-black mx-4  font-serif font-bold hover:underline cursor-pointer" onClick={() => handleNavigation('stories')}>Stories</div>
                     <div className="text-black mx-4  font-serif font-bold hover:underline cursor-pointer" onClick={() => handleNavigation('legal-insights')}>Legal Insights</div>
                     <div className="text-black mx-4 font-serif font-bold hover:underline cursor-pointer" onClick={() => handleNavigation('who-we-are')}>Who We Are</div>
