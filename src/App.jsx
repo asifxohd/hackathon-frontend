@@ -8,6 +8,7 @@ function App() {
 	return (
 		<>
 			<Landing/>
+
 			<LoginForm/>
 			<Register/>
 			<OtpForm/>
