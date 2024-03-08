@@ -1,15 +1,11 @@
-
-import Banner from "./components/landing/banner"
-import Navbar from "./components/navbar/navbar"
+import Landing from "./pages/landing/landing"
 
 function App() {
 
 	return (
 		<>
-			<Navbar/>
-			<Banner></Banner>
-			
-			 
+			<Landing/>
+
 		</>
 	)
 }
