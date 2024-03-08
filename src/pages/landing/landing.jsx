@@ -10,7 +10,7 @@ const Landing = () => {
             <Navbar />
             <Banner />
             
-            <div className="card-heading flex justify-center items-center ">
+            <div className="card-heading bg-yellow-50 mb-5 flex justify-center items-center ">
                 <p className="p-8 font-bold uppercase font-serif text-2xl">Together, We Shine: Unity Makes Us Stronger</p>
             </div>
 
