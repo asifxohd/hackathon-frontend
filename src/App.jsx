@@ -1,4 +1,5 @@
 import Abuse from "./pages/abuse/abuse"
+import Help from "./pages/help/help"
 import Landing from "./pages/landing/landing"
 import LoginForm from "./pages/login/login"
 import OtpForm from "./pages/otp/otp"
@@ -13,8 +14,9 @@ function App() {
 			<LoginForm/>
 			<Register/>
 			<OtpForm/>
-			<Story/> */}
-			<Abuse/>
+			<Story/>
+			<Abuse/> */}
+			<Help/>
 		</>
 	)
 }
