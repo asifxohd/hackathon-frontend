@@ -1,3 +1,4 @@
+
 import { createContext, useState } from "react";
 import Landing from "./pages/landing/landing"
 import LoginForm from "./pages/login/login"
@@ -18,6 +19,7 @@ function App() {
 	const [open, setOpen] = useState(false);
 	return (
 		<>
+
 
 			<MyContext.Provider value={{ open, setOpen }}>
 				<div className="relative">
@@ -40,6 +42,7 @@ function App() {
 					</BrowserRouter>
 				</div>
 			</MyContext.Provider>
+
 		</>
 	)
 }

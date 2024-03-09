@@ -6,6 +6,7 @@ const AbuseBanner = () => {
         <>
             <Navbar/>
             <div className="relative">
+
                 <div className="bg-cover max-lg:hidden bg-center h-screen" style={{ backgroundImage: `url("/bombing.png")` }}>
                     <div className=" inset-0 flex justify-end me-12">
                         <div className="max-w-2xl mx-4 max-md:mt-32 md:mt-52  text-black">
@@ -26,6 +27,7 @@ const AbuseBanner = () => {
                             <p className="mt-5 text-center font-sans text-sm md:text-lg">Abuse means someone uses words or actions to make you feel bad about yourself all the time. They might say mean things or make you scared, even if you didn't do anything wrong. It's not okay for anyone to treat you like that. It can make you feel really sad and scared, but you're not alone. There are people who can help you feel better and safer. Remember, it's not your fault, and you deserve to be treated with kindness and respect</p>
                         </div>
                 </div>
+
             </div>
 
             
