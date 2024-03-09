@@ -1,30 +1,35 @@
 import Footer from "../../components/Footer/footer";
 import AbuseBanner from "../../components/abuse/abuseBanner";
+
 import Navbar from "../../components/navbar/navbar";
 
 const Abuse = () => {
 
     return (
         <>
-            <Navbar />
+
+            {/* <Navbar /> */}
             <AbuseBanner />
             <div>
-                <div className="max-sm:flex-col-reverse flex mb-32 mt-24 md:mx-20">
+                <div className="max-sm:flex-col-reverse flex mb-32 mt-24 md:mx-20 mx-3">
                     <div className="max-sm:p-5 max-sm:mt-2 rounded-2xl md:w-2/3 w-full me-2 flex flex-col justify-center items-center">
                         <h1 className="text-center text-4xl font-serif">Future Faking</h1>
-                        <p className="font-serif text-lg text-center pt-4 px-8">Future faking is a manipulative tactic where the abuser deceives the victim by making promises or plans for the future that they have no intention of keeping. This creates a false sense of hope and commitment, keeping the victim emotionally invested in the relationship. For women, this can lead to feelings of betrayal, disappointment, and loss of trust. It perpetuates a cycle of dependency and manipulation, making it difficult for women to break free from abusive relationships and pursue a fulfilling future.</p>
+                        <p className="font-serif text-lg text-center  pt-4 px-8">Future faking is a manipulative tactic where the abuser deceives the victim by making promises or plans for the future that they have no intention of keeping. This creates a false sense of hope and commitment, keeping the victim emotionally invested in the relationship. For women, this can lead to feelings of betrayal, disappointment, and loss of trust. It perpetuates a cycle of dependency and manipulation, making it difficult for women to break free from abusive relationships and pursue a fulfilling future.</p>
                     </div>
 
                     <div className="rounded-lg md:w-1/3 w-full">
-                        <img className="rounded-2xl " src="https://mindfuldrawing.files.wordpress.com/2022/10/future-faked.jpg" alt="" />
+                        <img className="rounded-2xl w-full" src="https://mindfuldrawing.files.wordpress.com/2022/10/future-faked.jpg" alt="" />
+
                     </div>
                 </div>
             </div>
 
             <div>
-                <div className="max-sm:flex-col-reverse flex mb-32 mt-24 md:mx-20">
+
+                <div className="max-sm:flex-col-reverse flex mb-32 mt-24 md:mx-20 mx-3">
                     <div className="rounded-lg md:w-1/3 w-full">
-                        <img className="rounded-2xl" src="/couple.jpeg" alt="" />
+                        <img className="rounded-2xl w-full bg-cover" src="/couple.jpeg" alt="" />
+
                     </div>
 
                     <div className="max-sm:p-5 max-sm:mt-2 rounded-2xl md:w-2/3 w-full me-2 flex flex-col justify-center items-center">
@@ -35,14 +40,18 @@ const Abuse = () => {
             </div>
 
             <div>
-                <div className="max-sm:flex-col-reverse flex mb-32 mt-24 md:mx-20">
+
+                <div className="max-sm:flex-col-reverse flex mb-32 mt-24 md:mx-20 mx-3">
+
                     <div className="max-sm:p-5 max-sm:mt-2 rounded-2xl md:w-2/3 w-full me-2 flex flex-col justify-center items-center">
                         <h1 className="text-center text-4xl font-serif">Silence</h1>
                         <p className="font-serif text-lg text-center pt-4 px-8">Silence can be deafening, especially in intimate relationships where the silent treatment becomes a weapon of emotional manipulation. Often used as a form of control or punishment, prolonged periods of silence from a partner can inflict deep psychological wounds on women. This passive-aggressive tactic undermines their sense of worth, triggers anxiety, and fosters feelings of isolation. Recognizing and addressing this toxic behavior is essential for women to reclaim their emotional well-being and assert boundaries in their relationships.</p>
                     </div>
 
                     <div className="rounded-lg md:w-1/3 w-full">
-                        <img className="rounded-2xl" src="https://images.theconversation.com/files/245311/original/file-20181113-194485-mahhiw.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip" alt="" />
+
+                        <img className="rounded-2xl w-full" src="https://images.theconversation.com/files/245311/original/file-20181113-194485-mahhiw.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip" alt="" />
+
                     </div>
                 </div>
             </div>
@@ -51,7 +60,9 @@ const Abuse = () => {
 
             <div>
                 <div class="abuse-header bg-orange-100 text-gray-800 py-10 px-6 rounded-lg shadow-transparent">
-                    <h1 class="text-3xl font-serif text-center font-semibold">How to Identify Psychological Abuse</h1>
+
+                    <h1 class="sm:text-3xl text-xl font-serif text-center font-semibold">How to Identify Psychological Abuse</h1>
+
                 </div>
 
                 <div className="py-5" >
@@ -62,7 +73,9 @@ const Abuse = () => {
             </div>
 
 
-            <div class="mx-20 mb-12 shadow-sm bg-orange-100 rounded-3xl">
+
+            <div class="md:mx-20 mx-auto mb-12 shadow-sm bg-orange-100 rounded-3xl">
+
                 <ul class="px-24 py-10 list-disc">
                     <li class="mb-4"><b>Manipulative Behavior:</b> Your partner constantly manipulates situations or emotions to control you.</li>
                     <li class="mb-4"><b>Gaslighting:</b> They deny your reality, making you doubt your perceptions and sanity.</li>

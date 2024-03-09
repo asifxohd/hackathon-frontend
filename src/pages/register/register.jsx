@@ -69,9 +69,9 @@ const Register = () => {
                             </button>
                             <p className="block mt-4 font-sans text-sm antialiased font-normal leading-relaxed text-center text-gray-700">
                                 Don't have an account?
-                                <a  className="font-medium text-gray-900">
+                                <Link to='/login' className="font-medium text-gray-900">
                                     Sign Up
-                                </a>
+                                </Link>
                                 </p>
                         </form>
                     </div>

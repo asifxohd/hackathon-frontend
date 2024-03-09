@@ -20,8 +20,9 @@ const Help = () => {
 
 
 
-            <div className="w-full mt-10"> {/* Aligns the content to the right */}
-                <div className='max-w-4xl mx-auto '>
+            <div className="w-full mt-10"> 
+                <div className='lg:max-w-4xl sm:max-w-2xl w-[95%] mx-auto '>
+
                     <div className="relative flex items-center px-2 w-full h-12 rounded-3xl focus-within:shadow-lg bg-white overflow-hidden">
                         <div className="grid place-items-center h-full w-12 text-gray-300">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,7 +40,8 @@ const Help = () => {
                 </div>
             </div>
             <div className=" my-24  w-full flex justify-center">
-            <div className=" grid grid-cols-5 gap-10">
+            <div className="grid lg:grid-cols-4 grid-cols-1 gap-9 sm:grid-cols-2 sm:gap-9 md:grid-cols-3 md:gap-9 lg:gap-9 xl:grid-cols-5 xl:gap-9">
+
                 <VolunteerCard/>
                 <VolunteerCard/>
                 <VolunteerCard/>
