@@ -1,3 +1,4 @@
+import Abuse from "./pages/abuse/abuse"
 import Landing from "./pages/landing/landing"
 import LoginForm from "./pages/login/login"
 import OtpForm from "./pages/otp/otp"
@@ -8,11 +9,12 @@ function App() {
 
 	return (
 		<>
-			<Landing/>
+			{/* <Landing/>
 			<LoginForm/>
 			<Register/>
 			<OtpForm/>
-			<Story/>
+			<Story/> */}
+			<Abuse/>
 		</>
 	)
 }
