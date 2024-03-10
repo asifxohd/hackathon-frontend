@@ -11,7 +11,7 @@ import Abuse from "./pages/abuse/abuse";
 import Help from "./pages/help/help";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Complaint from "./pages/complaint/complaint";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const MyContext = createContext();
@@ -38,6 +38,7 @@ function App() {
 							<Route path="/community" element={((!open) && <Community />)} />
 							<Route exact path="/" element={((!open) && <Landing />)} />
 							<Route exact path="/abuse" element={(!open) && <Abuse />} />
+							<Route  path="/complaint" element={(!open) && <Complaint/>} />
 
 
 						</Routes>
