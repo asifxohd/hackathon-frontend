@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import Footer from "../../components/Footer/footer";
 import VolunteerCard from "../../components/Volunteer/VolunteerCard";
+import Message from "../../components/message/message";
 import Navbar from "../../components/navbar/navbar";
+import axios from "axios";
 
 const Help = () => {
+    const [openMessage,setOpenMessage]=useState(false)
+    const [stories,setStories]=useState({})
+
+    // useEffect(()=>{
+    //     axios.get
+    // })
     return (
         <>
             <Navbar />
@@ -12,15 +21,14 @@ const Help = () => {
                 <p className="text-gray-700 font-bold text-5xl font-serif">Help</p>
             </div>
 
+            
             <div className="container mx-auto mt-8 px-4">
                 <p className="text-lg text-gray-800 text-center font-serif leading-7">
                     Welcome to our volunteer search platform. If you encounter any challenges in the future, rest assured that we are here to assist you. Our dedicated team is committed to helping you find the right volunteers for your needs. Please explore the options below to connect with volunteers who can support your cause effectively.
                 </p>
             </div>
 
-
-
-            <div className="w-full mt-10"> 
+            <div className="w-full mt-10">
                 <div className='lg:max-w-4xl sm:max-w-2xl w-[95%] mx-auto '>
 
                     <div className="relative flex items-center px-2 w-full h-12 rounded-3xl focus-within:shadow-lg bg-white overflow-hidden">
@@ -40,22 +48,34 @@ const Help = () => {
                 </div>
             </div>
             <div className=" my-24  w-full flex justify-center">
-            <div className="grid lg:grid-cols-4 grid-cols-1 gap-9 sm:grid-cols-2 sm:gap-9 md:grid-cols-3 md:gap-9 lg:gap-9 xl:grid-cols-5 xl:gap-9">
+                <div className="grid lg:grid-cols-4 grid-cols-1 gap-9 sm:grid-cols-2 sm:gap-9 md:grid-cols-3 md:gap-9 lg:gap-9 xl:grid-cols-5 xl:gap-9">
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
+                    <VolunteerCard />
 
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                <VolunteerCard/>
-                
+                </div>
             </div>
+
+            <div className="w-full flex flex-col py-4 mb-24">
+                <div className="text-center font-bold text-xl mt-2 text-gray-600 font-serif">
+                    If you have any questions, feel free to ask with the help of our AI assistant.
+                </div>
+
+                <button onClick={()=>setOpenMessage(true)} className="mx-auto mt-5 bg-transparent hover:bg-gray-700 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
+                    Click Here and See The Magic
+                </button>
             </div>
-            <Footer/>
+
+            <Message prop={{openMessage,setOpenMessage}}/>
+
+            <Footer />
         </>
     );
 }

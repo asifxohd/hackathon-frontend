@@ -1,13 +1,17 @@
+import React, { useEffect } from 'react';
 import Footer from "../../components/Footer/footer";
 import Card from "../../components/cards/landingcard";
 import StoryCard from "../../components/cards/storycard";
 import Banner from "../../components/landing/banner";
+import Message from "../../components/message/message";
 import Navbar from "../../components/navbar/navbar";
 
 const Landing = () => {
+
     return (
         <>
             <Navbar />
+            {/* <Message/> */}
             <Banner />
             
             <div className="card-heading bg-yellow-50 mb-5 flex justify-center items-center ">
@@ -15,10 +19,11 @@ const Landing = () => {
             </div>
 
             <div className="cards gap-6 flex flex-wrap justify-center items-center ">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card prop={{header:"Identify abuse", content:"Identifying psychological abuse in women involves recognizing manipulation, control, gaslighting, isolation, threats, and undermining of confidence and autonomy." , img:"https://d3i11hp0zpbt87.cloudfront.net/media/W1siZiIsIjIwMjEvMDQvMjcvMTYvNDkvMDUvZTUwNjU4MzAtZjg2Ny00YmVmLWJlYzUtNDllNzhiZmU4NWEzL2lTdG9jay0xMTg0MTA4NjI1LmpwZyJdLFsicCIsInRodW1iIiwiMTI0MHg2NDAjIl1d?basename=What+Is+Emotional+Abuse%3F&sha=bbde2e1c2dec4204"}} />
+                <Card prop={{header:"Stories", content:"These experiences reflect the resilience and strength of women who have triumphed over psychological abuse and reclaimed their autonomy." , img:"https://media.istockphoto.com/id/1157741177/photo/portrait-of-a-young-adult-asian-woman-in-venice.jpg?s=612x612&w=0&k=20&c=VWgnBIQMyNPF1a7mh3CFci7g_97MfoFy5jHvvElhVH8="}} />
+                <Card prop={{header:"Community", content:"These communities provide safe spaces for women to share their thoughts, connect with others, and find healing from psychological abuse" , img:"https://img.freepik.com/free-photo/low-angle-best-friends-looking-down_23-2148440535.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709510400&semt=ais"}} />
+                <Card prop={{header:"Help", content:"This help center offers access to nearby volunteers and AI assistance to support women facing psychological abuse and other challenges" , img:"https://inteliexpress.com/wp-content/uploads/2019/02/call_center_Vac.jpg"}} />
+
             </div>
             
 

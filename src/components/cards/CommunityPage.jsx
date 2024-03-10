@@ -3,17 +3,51 @@ import Modal from "react-modal";
 
 import { FaArrowRight } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { BASE_URL } from "../../constents";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const StoryPageCard = () => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [name, setName] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [location , setLocation] = useState('')
+
 
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
+    setName('')
+    setPhoneNumber('')
+    setLocation('')
     setIsModalOpen(false);
   };
+
+
+  const handleVolunteerButtonClick = () => {
+    const data = {
+      name: name,
+      number: phoneNumber,
+      location: location
+    };
+  
+    // Axios POST request
+    axios.post(BASE_URL+'add-volunteer', data)
+      .then(response => {
+        console.log('Request successful:', response.data);
+        toast.success('Volunteer added successfully')
+        closeModal()
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        toast.error(error)
+      });
+  };
+
   return (
     <>
       <div className=" px-auto my-8 ">
@@ -87,14 +121,14 @@ const StoryPageCard = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center mt-2">
+      <Link to='/stories' className="flex justify-center items-center mt-2">
         <button className=" flex border border-gray-500 p-3 m-3  rounded-lg ">
           Load More
           <span className="pl-2 mt-1">
             <FaArrowRight />
           </span>
         </button>
-      </div>
+      </Link>
 
       <div className="flex flex-col justify-center font-serif items-center mt-3 p-8 lg:h-[500px] bg-[#F2F1EB]">
         <div className="mx-8 text-center">
@@ -121,7 +155,7 @@ const StoryPageCard = () => {
           onClick={openModal}
           className="flex justify-center items-center  mt-5 lg:mt-12"
         >
-          <button className=" flex border border-gray-500 p-3 m-3 font-serif  rounded-lg ">
+          <button className=" flex border hover:bg-gray-700 font-serif hover:text-white border-gray-500 p-3 m-3 rounded-lg ">
             Become a volunteer
           </button>
         </div>
@@ -176,7 +210,9 @@ const StoryPageCard = () => {
               </h6>
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
+                  onChange={(e)=> setName(e.target.value)}
                   placeholder="Enter your name "
+                  value={name}
                   className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 />
               </div>
@@ -185,6 +221,8 @@ const StoryPageCard = () => {
               </h6>
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
+                  onChange={(e)=> setPhoneNumber(e.target.value)}
+                  value={phoneNumber}
                   placeholder="Entere your phone number"
                   className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 />
@@ -194,6 +232,8 @@ const StoryPageCard = () => {
               </h6>
               <div className="relative h-auto w-full min-w-[200px]">
                 <textarea
+                  value={location}
+                  onChange={(e)=> setLocation(e.target.value)}
                   placeholder="Enter your location"
                   className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   rows="4"
@@ -203,6 +243,7 @@ const StoryPageCard = () => {
             </div>
 
             <button
+              onClick={handleVolunteerButtonClick}
               className="mt-6 block w-full  select-none rounded-lg bg-[#DED0B6] py-3 px-6 text-center align-middle font-sans text-xs font-semibold uppercase text-black shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >

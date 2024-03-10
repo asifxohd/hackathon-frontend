@@ -9,6 +9,8 @@ import Hamberger from "./components/Hamberger/Hamberger";
 import StoriesPage from "./pages/story/Stories";
 import Abuse from "./pages/abuse/abuse";
 import Help from "./pages/help/help";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -20,7 +22,7 @@ function App() {
 	return (
 		<>
 
-
+			<ToastContainer />
 			<MyContext.Provider value={{ open, setOpen }}>
 				<div className="relative">
 					<Hamberger prop={{ open, setOpen }} />

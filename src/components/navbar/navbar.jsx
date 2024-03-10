@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({ open, setOpen }) => {
+const Navbar = () => {
     const [scrolling, setScrolling] = useState(false);
+    const {open,setOpen}=useContext(MyContext)
+    const navigator=useNavigate()
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {
@@ -23,7 +25,7 @@ const Navbar = ({ open, setOpen }) => {
     return (
         <>
             <div
-                className="h-24    flex  md:px-7 px-2 w-full justify-between fixed z-10 items-center"
+                className="h-24 flex  md:px-7 px-2 w-full justify-between fixed z-10 items-center"
                 style={{
                     backgroundColor: scrolling ? "white" : "transparent",
                     transition: "background-color 0.6s ease-out",
@@ -31,7 +33,7 @@ const Navbar = ({ open, setOpen }) => {
               >
                 <div>
                     <div className="logo flex align-middle">
-                        <Link to='/' className="">
+                        <span onClick={()=>navigator('/')} className="">
                             <img
                                 className="h-24 p-2  max-sm:hidden  "
                                 src="/Desktop.png"
@@ -42,48 +44,53 @@ const Navbar = ({ open, setOpen }) => {
                                 src="/Desktop.png"
                                 alt=""
                             />
-                        </Link>
+                        </span>
                     </div>
                 </div>
 
-                <div className="center-portion flex max-lg:hidden justify-center pe-0">
-                    <Link
-                        to="/abuse"
-                        className="text-black mx-4  font-serif font-bold hover:underline cursor-pointer"
+                <div className="center-portion flex  max-lg:hidden justify-center pe-0">
+                    <span
+                        onClick={()=>navigator('/')}
+                        className="text-black mx-4  font-serif font-bold hover:text-gray-600 cursor-pointer"
+                    >
+                        Home
+                    </span>
+                    <span
+                        onClick={()=>navigator('/abuse')}
+                        className="text-black mx-4  font-serif font-bold hover:text-gray-600 cursor-pointer"
                     >
                         Identify abuse
-                    </Link>
-                    <Link
-                        to="/community"
-                        className="text-black mx-4  font-serif font-bold hover:underline cursor-pointer"
+                    </span>
+                    <span
+                        onClick={()=>navigator("/community")}
+                        className="text-black mx-4  font-serif font-bold hover:text-gray-600 cursor-pointer"
                     >
                         Community
-                    </Link>
-                    <Link
-                        to="/stories"
-                        className="text-black mx-4  font-serif font-bold hover:underline cursor-pointer"
+                    </span>
+                    <span
+                        onClick={()=>navigator("/stories")}
+                        className="text-black mx-4  font-serif font-bold hover:text-gray-600 cursor-pointer"
                     >
                         Stories
-                    </Link>
-                    <Link
-                        to="/help"
-                        className="text-black mx-4 font-serif font-bold hover:underline cursor-pointer"
+                    </span>
+                    <span
+                        onClick={()=>navigator("/help")}
+                        className="text-black mx-4 font-serif font-bold  hover:text-gray-600 cursor-pointer"
                     >
                         Help
-                    </Link>
+                    </span>
                 </div>
 
                 <div className="right-portion me-6 max-lg:hidden">
-                    <a
-                        href="#_"
+                    <div
                         className="relative inline-block px-4 py-2 font-medium group"
                     >
-                        <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-                        <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
-                        <Link to='/login' className="relative text-black group-hover:text-white">
+                        <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-transparent group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                        <span className="absolute rounded-xl  inset-0 w-full h-full bg-transparent border-2 border-black group-hover:bg-black"></span>
+                        <Link to='/login' className="relative p-2  text-black group-hover:text-white">
                             Login{" "}
                         </Link>
-                    </a>
+                    </div>
                 </div>
                 {!open && (
                     <div

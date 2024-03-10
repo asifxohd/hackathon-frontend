@@ -7,7 +7,7 @@ const AbuseBanner = () => {
             <Navbar/>
             <div className="relative">
 
-                <div className="bg-cover max-lg:hidden bg-center h-screen" style={{ backgroundImage: `url("/bombing.png")` }}>
+                <div className="bg-cover max-lg:hidden bg-center h-screen"  data-aos="fade-down" style={{ backgroundImage: `url("/bombing.png")` }}>
                     <div className=" inset-0 flex justify-end me-12">
                         <div className="max-w-2xl mx-4 max-md:mt-32 md:mt-52  text-black">
                             <h1 className="text-5xl font-serif text-center font-bold">What Exactly Is Psychological Abuse ?</h1>

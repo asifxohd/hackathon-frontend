@@ -33,7 +33,7 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="text-center mt-8">
-				<p className="text-xs">&copy; 2024 Your Organization. All rights reserved.</p>
+				<p className="text-xs">&copy; 2024 When She Knows. All rights reserved.</p>
 			</div>
 		</footer>
 	);

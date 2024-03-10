@@ -1,7 +1,63 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { BASE_URL } from "../../constents";
 
 const LoginForm = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [EmailError, setEmailError] = useState("");
+    const [PasswordError, setPasswordError] = useState("");
+    const navigator=useNavigate()
+    const validateEmail = (value) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setEmailError(regex.test(value) ? "" : "Invalid email");
+      };
+      function handleEmailChange(e) {
+        const value = e.target.value;
+        setEmail(value);
+        validateEmail(value);
+      }
+    
+      const validatePassword = (value) => {
+        const regex = /^.{8,}$/;
+        setPasswordError(
+          regex.test(value) ? "" : "Password must be at least 8 characters"
+        );
+      };
+      function handlePasswordChange(e) {
+        const value = e.target.value;
+        setPassword(value);
+        validatePassword(value);
+      }
+    
+      function submitForm(e) {
+        e.preventDefault();
+        if (!EmailError && !PasswordError) {
+          const data = {
+            username: email,
+            password: password,
+          };
+
+          console.log(data);
+            axios
+            .post(BASE_URL + "login", data)
+            .then((response) => {
+              if (response.success == 400) {
+                toast.error("Give Proper Credentials");
+              } else {
+                toast.success("User logined Successfully");
+                console.log(response)
+                navigator("/"); 
+              }
+              console.log(response)
+            })
+            .catch((error) => toast.error(error));
+        } else {
+          toast.error(EmailError ? EmailError : PasswordError);
+        }
+      }
     
     return (
         <>
@@ -25,7 +81,7 @@ const LoginForm = () => {
                                     Your Email
                                 </h6>
                                 <div className="relative h-11 w-full min-w-[200px]">
-                                    <input
+                                    <input value={email} onChange={(e)=>handleEmailChange(e)}
                                         placeholder="name@mail.com"
                                         className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                                     />
@@ -34,7 +90,7 @@ const LoginForm = () => {
                                     Password
                                 </h6>
                                 <div className="relative h-11 w-full min-w-[200px]">
-                                    <input
+                                    <input value={password} onChange={(e)=>handlePasswordChange(e)}
                                         type="password"
                                         placeholder="********"
                                         className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -42,7 +98,7 @@ const LoginForm = () => {
                                 </div>
                             </div>
 
-                            <button
+                            <button onClick={(e)=>submitForm(e)}
                                 className="mt-6 block w-full select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 type="button"
                             >
