@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../constents";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUserDetails } from "../../features/userSlice";
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [EmailError, setEmailError] = useState("");
     const [PasswordError, setPasswordError] = useState("");
+
+    const dispatch = useDispatch();
     const navigator=useNavigate()
     const validateEmail = (value) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,7 +53,11 @@ const LoginForm = () => {
               } else {
                 toast.success("User logined Successfully");
                 console.log(response)
-                navigator("/"); 
+                localStorage.setItem('user', JSON.stringify(response.data.user));
+                dispatch(updateUserDetails(response.data.user))
+                setTimeout(() => {
+                  navigator("/"); 
+                },2500);
               }
               console.log(response)
             })
