@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
     const [scrolling, setScrolling] = useState(false);
     const {open,setOpen}=useContext(MyContext)
     const navigator=useNavigate()
+    const { user } = useSelector((state) => state.user);
+    
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {
