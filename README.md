@@ -1,6 +1,22 @@
-# When She Knows - Frontend
+# When She Knows
 
-Welcome to the frontend repository for "When She Knows" project. This repository contains the frontend codebase built with React.js.
+## Project Overview
+
+"When She Knows" is a transformative project dedicated to empowering women who are facing psychological abuse. Our platform provides a safe and supportive community where women can connect, share experiences, and find solace amidst the challenges of psychological trauma.
+
+## Features:
+
+- **Community Space:** Join a vibrant community of like-minded individuals, offering support, understanding, and solidarity.
+  
+- **Group Chat:** Engage in real-time conversations with fellow members, fostering connections and providing immediate support.
+
+- **Dynamic Storytelling:** Explore a curated collection of stories showcasing resilience and triumph over psychological abuse.
+
+- **Awareness Page:** Access informative resources and educational materials to deepen understanding about psychological abuse.
+
+- **Expert Consultation:** Connect with professionals and utilize an AI-integrated help desk for personalized guidance and support.
+
+- **Beautiful Landing Page:** Experience a visually stunning interface that invites users to embark on a journey of healing and self-discovery.
 
 ## Getting Started
 
@@ -15,18 +31,7 @@ To set up the frontend locally, follow these steps:
 ### Installation Steps
 
 1. Clone the repository to your local machine:
-https://github.com/asifxohd/hackathon-frontend.git
-
-2. Navigate into the project directory:
-  cd projectfolder
-
-3. Install dependencies using npm:
-  npm install
-
-
-### Development Server
-
-To start the development server:
+git clone https://github.com/asifxohd/hackathon-frontend.git
+cd project dir
+npm install
 npm run dev
-
-
