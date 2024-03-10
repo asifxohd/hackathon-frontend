@@ -18,10 +18,10 @@ To set up the frontend locally, follow these steps:
 https://github.com/asifxohd/hackathon-frontend.git
 
 2. Navigate into the project directory:
-cd projectfolder
+  cd projectfolder
 
 3. Install dependencies using npm:
-npm install
+  npm install
 
 
 ### Development Server
