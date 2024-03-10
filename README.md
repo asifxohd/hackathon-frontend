@@ -31,7 +31,7 @@ To set up the frontend locally, follow these steps:
 ### Installation Steps
 
 1. Clone the repository to your local machine:
-git clone https://github.com/asifxohd/hackathon-frontend.git
-cd project dir
-npm install
-npm run dev
+git clone https://github.com/asifxohd/hackathon-frontend.git \n
+cd project dir \n
+npm install \n
+npm run dev \n
