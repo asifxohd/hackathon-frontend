@@ -13,7 +13,7 @@ const InputMessage = ({prop}) => {
             userPrompt: query, 
         };
     
-        await axios.post({BASE_URL}+'chatbot', data)
+        await axios.post(BASE_URL+'chatbot', data)
             .then((response) => {
                 console.log(response.data.response);
                 setResult(response.data.response);

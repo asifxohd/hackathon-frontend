@@ -38,7 +38,7 @@ function App() {
 							<Route path="/community" element={((!open) && <Community />)} />
 							<Route exact path="/" element={((!open) && <Landing />)} />
 							<Route exact path="/abuse" element={(!open) && <Abuse />} />
-							<Route  path="/complaint" element={(!open) && <Complaint/>} />
+							<Route  path="/consult" element={(!open) && <Complaint/>} />
 
 
 						</Routes>

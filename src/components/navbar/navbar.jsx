@@ -79,6 +79,14 @@ const Navbar = () => {
                     >
                         Help
                     </span>
+                    <span
+                        onClick={()=>navigator("/consult")}
+                        className="text-black mx-4 font-serif font-bold  hover:text-gray-600 cursor-pointer"
+                    >
+                        Consult
+                    </span>
+                    
+
                 </div>
 
                 <div className="right-portion me-6 max-lg:hidden">
