@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { FaArrowRight } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { BASE_URL } from "../../constents";
+import { BASE_URL, local } from "../../constents";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const StoryPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,6 +12,29 @@ const StoryPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [stories, setStories] = useState([]);
+  const [count, setCount] = useState(3);
+  useEffect(() => {
+    axios
+      .get(BASE_URL + "stories")
+      .then((response) => {
+        console.log(response.data.story);
+        setStories(response.data.story);
+      })
+      .catch((error) => toast.error(error));
+  }, []);
+
+  function counterIncrease() {
+    var i = 0;
+    while (i < 3) {
+      if (count <= stories.length) {
+        setCount((count) => count + 1);
+        i = i + 1;
+      } else {
+        break;
+      }
+    }
+  }
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -24,116 +48,101 @@ const StoryPage = () => {
     const file = e.target.files[0];
     if (file) {
       setImage(file);
-
+  
       const reader = new FileReader();
       reader.onload = (e) => {
         const imageViewer = document.querySelector(".image-viewer");
         if (imageViewer) {
-          imageViewer.style.backgroundImage = `url(${e.target.result})`;
+          imageViewer.style.backgroundImage = `url(${e.target.result})`; // Corrected
           imageViewer.style.display = "block";
         }
       };
       reader.readAsDataURL(file);
     }
   };
-
+  
   const handleShare = () => {
-
     const formData = new FormData();
     formData.append("image", image);
     formData.append("name", name);
     formData.append("title", title);
     formData.append("description", description);
-    axios.post(BASE_URL+'add-story', formData)
-      .then(response => {
-        console.log(response.data)
-        console.log('Request successful:', response.data);
+    axios
+      .post(BASE_URL + "add-story", formData)
+      .then((response) => {
+        console.log(response.data);
+        console.log("Request successful:", response.data);
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch((error) => {
+        console.error("Error:", error);
       });
 
-      setName("");
-      setTitle("");
-      setDescription("");
-      setImage(null);
-      closeModal();
+    setName("");
+    setTitle("");
+    setDescription("");
+    setImage(null);
+    closeModal();
   };
 
   return (
     <>
-      <div className=" px-auto my-8 ">
-        <div
-          className="  rounded-3xl  md:mx-16 lg:mx-24 mx-8 flex max-lg:flex-col flex-row justify-center items-center p-10"
-          style={{ backgroundColor: "#B2B377" }}
-        >
-          <img
-            className="ml-5 object-cover h-72 lg:hidden w-96 rounded-3xl "
-            src="https://media.istockphoto.com/id/912337826/photo/thoughtful-woman-working-at-a-creative-office.webp?b=1&s=170667a&w=0&k=20&c=v84u9k4H6HzOZW3BPWNAjuyt4fAB-FO0EnkozYwQdnM="
-            alt=""
-          />
-          <div className="font-serif max-lg:mt-10 ">
-            “For years I thought I was losing my mind. My husband was always
-            nice to me and doing thoughtful things for me, but then there were
-            times he would subtly put me down and make me feel like I wasn’t
-            worth anything. If I tried to bring up something he said to me and
-            how it upset me, I was met with ‘You know I didn’t mean it that
-            way’, ‘I NEVER said anything like that. Why would you think that I
-            would say something like that?’, or ‘I think you are just being
-            overly emotional and your depression/anxiety is making you feel that
-            way’. Nothing was ever his fault, it was all mine. Even when I
-            learned of an affair he had, it was my fault because I was
-            neglecting him emotionally/sexually. Once I got free of the
-            situation, I was able to see the control for what it was. I wasn’t
-            losing my mind, I was just living with someone who tried to chip
-            away my reality and personality.”
-            <br /> <br />
-            <b>name of the person</b>
-            <br />
-            survivar of physical abuse
-          </div>
-          <img
-            className="ml-5 object-cover h-72 max-lg:hidden w-96 rounded-3xl "
-            src="https://media.istockphoto.com/id/912337826/photo/thoughtful-woman-working-at-a-creative-office.webp?b=1&s=170667a&w=0&k=20&c=v84u9k4H6HzOZW3BPWNAjuyt4fAB-FO0EnkozYwQdnM="
-            alt=""
-          />
-        </div>
-      </div>
+      {stories.map((prop, index) => {
+        if (index % 2 == 0 && index < count) {
+          return (
+            <div className=" px-auto my-8 ">
+              <div
+                className="  rounded-3xl  md:mx-16 lg:mx-24 mx-8 flex max-lg:flex-col flex-row justify-center items-center p-10"
+                style={{ backgroundColor: "#B2B377" }}
+              >
+                <img
+                  className="ml-5 object-cover h-72 lg:hidden w-96 rounded-3xl "
+                  src={local + prop.image}
+                  alt=""
+                />
+                <div className="font-serif max-lg:mt-10 ">
+                  {prop.description}
+                  <br /> <br />
+                  <b>{prop.name}</b>
+                  <br />
+                  {prop.title}
+                </div>
+                <img
+                  className="ml-5 object-cover h-72 max-lg:hidden w-96 rounded-3xl "
+                  src={local + prop.image}
+                  alt=""
+                />
+              </div>
+            </div>
+          );
+        } else if (index % 2 == 1 && index < count) {
+          return (
+            <div className=" px-auto my-8">
+              <div
+                className=" rounded-3xl  md:mx-16 lg:mx-24 mx-8 flex max-lg:flex-col flex-row justify-center items-center p-10"
+                style={{ backgroundColor: "#B2B377" }}
+              >
+                <img
+                  className="mr-5 object-cover  h-72 w-96 rounded-3xl"
+                  src={local + prop.image}
+                  alt=""
+                />
+                <div className="font-serif max-lg:mt-10">
+                  {prop.description}
+                  <br /> <br />
+                  <b>{prop.name}</b>
+                  <br />
+                  {prop.title}
+                </div>
+              </div>
+            </div>
+          );
+        }
+      })}
 
-      <div className=" px-auto my-8">
-        <div
-          className=" rounded-3xl  md:mx-16 lg:mx-24 mx-8 flex max-lg:flex-col flex-row justify-center items-center p-10"
-          style={{ backgroundColor: "#B2B377" }}
-        >
-          <img
-            className="mr-5 object-cover  h-72 w-96 rounded-3xl"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShWK1zbbWb3dJ-B3TDz9t8cZdVuBXguh5x3ERBIJBG0ZIcN8SPNWG9CHt0y1fzAAblOB8&usqp=CAU"
-            alt=""
-          />
-          <div className="font-serif max-lg:mt-10">
-            “For years I thought I was losing my mind. My husband was always
-            nice to me and doing thoughtful things for me, but then there were
-            times he would subtly put me down and make me feel like I wasn’t
-            worth anything. If I tried to bring up something he said to me and
-            how it upset me, I was met with ‘You know I didn’t mean it that
-            way’, ‘I NEVER said anything like that. Why would you think that I
-            would say something like that?’, or ‘I think you are just being
-            overly emotional and your depression/anxiety is making you feel that
-            way’. Nothing was ever his fault, it was all mine. Even when I
-            learned of an affair he had, it was my fault because I was
-            neglecting him emotionally/sexually. Once I got free of the
-            situation, I was able to see the control for what it was. I wasn’t
-            losing my mind, I was just living with someone who tried to chip
-            away my reality and personality.”
-            <br /> <br />
-            <b>name of the person</b>
-            <br />
-            survivor of physical abuse
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-center items-center mt-2">
+      <div
+        className="flex justify-center items-center mt-2"
+        onClick={() => counterIncrease()}
+      >
         <button className=" flex border border-gray-500 p-3 m-3  rounded-lg ">
           Load More
           <span className="pl-2 mt-1">
@@ -221,7 +230,7 @@ const StoryPage = () => {
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
                   value={name}
-                  onChange={(e)=> setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your name "
                   className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 />
@@ -232,7 +241,7 @@ const StoryPage = () => {
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
                   value={title}
-                  onChange={(e)=> setTitle(e.target.value)}
+                  onChange={(e) => setTitle(e.target.value)}
                   placeholder="Entere your Title"
                   className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 />
@@ -243,7 +252,7 @@ const StoryPage = () => {
               <div className="relative h-auto w-full min-w-[200px]">
                 <textarea
                   value={description}
-                  onChange={(e)=> setDescription(e.target.value)}
+                  onChange={(e) => setDescription(e.target.value)}
                   placeholder="Enter your story"
                   className="peer h-full w-full rounded-md border border-black border-opacity-20 focus:border-black focus:border-opacity-100 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   rows="4"

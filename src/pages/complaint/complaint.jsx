@@ -4,28 +4,35 @@ import Navbar from "../../components/navbar/navbar";
 import { BASE_URL } from "../../constents";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const Complaint = () => {
 
   const [text, setText] = useState('')
+  const { user } = useSelector((state) => state.user);
+console.log(user.email)
 
   const handleSubmit = async () => {
-    try {
-      // Prepare the data object
-      const data = {
-        userPrompt: text, 
-      };
-  
-      // Send the POST request
-      const response = await axios.post(BASE_URL+'/add-complaints', data);
-  
-      console.log(response.data.response); 
-      setText('')
-      toast.success("you will get your response on your email")
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error("Error:!!! please try again after some time")
+    if(user){
+      try {
+        const data = {
+          complaints: text,
+          email:user.email
+        };
+    
+        const response = await axios.post(BASE_URL+'/add-complaints', data);
+    
+        console.log(response.data.response); 
+        setText('')
+        toast.success("you will get your response on your email")
+      } catch (error) {
+        console.error('Error:', error);
+        toast.error("Error:!!! please try again after some time")
+      }
+    }else{
+      toast.error('Please Login for Consult')
     }
+    
   };
   return (
     <>

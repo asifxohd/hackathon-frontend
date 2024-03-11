@@ -13,12 +13,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Complaint from "./pages/complaint/complaint";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useSelector } from "react-redux";
+
 
 const MyContext = createContext();
 
 
 function App() {
+
 	const [open, setOpen] = useState(false);
+	const { user } = useSelector((state) => state.user);
+
 	return (
 		<>
 
@@ -31,7 +36,7 @@ function App() {
 					<BrowserRouter>
 						<Routes>
 							<Route path="/login" element={(!open) && <LoginForm />} />
-							<Route path="/register" element={(!open) && <Register />} />
+							<Route path="/register" element={(!open)&& <Register />} />
 							<Route path="/otp" element={(!open) && <OtpForm />} />
 							<Route path="/help" element={(!open) && <Help />} />
 							<Route path="/stories" element={((!open) && <StoriesPage />)} />

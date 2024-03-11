@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../constents";
+import { useDispatch, useSelector } from "react-redux";
 
 const Register = () => {
     const [name,setName]=useState('')
@@ -13,7 +14,14 @@ const Register = () => {
     const [EmailError, setEmailError] = useState("");
     const [PasswordError, setPasswordError] = useState("");
     const [ConfirmPasswordError, setConfirmPasswordError] = useState("");
+    const { user } = useSelector((state) => state.user);
+    const dispatch = useDispatch();
     const navigate=useNavigate()
+    useEffect(()=>{
+      if (user){
+        navigate('/')
+      }
+    },[])
     const validateName = useCallback(
         (value) => {
         const regex = /^[a-zA-Z0-9_]{3,20}$/;

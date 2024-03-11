@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../constents";
@@ -11,9 +11,18 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const [EmailError, setEmailError] = useState("");
     const [PasswordError, setPasswordError] = useState("");
-
+    const { user } = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigator=useNavigate()
+    console.log(user,'this')
+
+    useEffect(()=>{
+      if (user){
+        navigator('/')
+      }
+    },[])
+
+    
     const validateEmail = (value) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setEmailError(regex.test(value) ? "" : "Invalid email");

@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUserData } from "../../features/userSlice";
+
 
 const Navbar = () => {
     const [scrolling, setScrolling] = useState(false);
     const {open,setOpen}=useContext(MyContext)
     const navigator=useNavigate()
+    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user);
     
     useEffect(() => {
@@ -92,17 +95,27 @@ const Navbar = () => {
 
                 </div>
 
-                <div className="right-portion me-6 max-lg:hidden">
-                    <div
-                        className="relative inline-block px-4 py-2 font-medium group"
-                    >
-                        <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-transparent group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-                        <span className="absolute rounded-xl  inset-0 w-full h-full bg-transparent border-2 border-black group-hover:bg-black"></span>
-                        <Link to='/login' className="relative p-2  text-black group-hover:text-white">
-                            Login{" "}
-                        </Link>
-                    </div>
+        {(!user)?(<div className="right-portion me-6 max-lg:hidden">
+                <div
+                    className="relative inline-block px-4 py-2 font-medium group"
+                >
+                    <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-transparent group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                    <span className="absolute rounded-xl  inset-0 w-full h-full bg-transparent border-2 border-black group-hover:bg-black"></span>
+                    <Link to='/login' className="relative p-2  text-black group-hover:text-white">
+                        Login{" "}
+                    </Link>
                 </div>
+            </div>):(<div onClick={()=>{dispatch(deleteUserData())}} className="right-portion me-6 max-lg:hidden">
+                <div
+                    className="relative inline-block px-4 py-2 font-medium group"
+                >
+                    <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-transparent group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                    <span className="absolute rounded-xl  inset-0 w-full h-full bg-black border-2 border-black group-hover:bg-black"></span>
+                    <Link to='/login' className="relative p-2  text-white group-hover:text-white">
+                        Logout{" "}
+                    </Link>
+                </div>
+            </div>)}
                 {!open && (
                     <div
                         onClick={() => setOpen(true)}

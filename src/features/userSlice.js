@@ -18,13 +18,15 @@ const userSlice = createSlice({
     name:'user',
     initialState:checkUserExist(),
     reducers:{
-        deleteUserData : (state,action) => {
+        deleteUserData: (state, action) => {
             state.user = null;
+            localStorage.removeItem('user'); 
         },
+        
         updateUserDetails : (state, action) => {
             console.log(action)
             state.user = action.payload;
-            localStorage.setItem('user', JSON.stringify(action.payload.user))
+            localStorage.setItem('user', JSON.stringify(action.payload))
         }
     }
 })
