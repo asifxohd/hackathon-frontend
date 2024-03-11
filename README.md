@@ -5,7 +5,7 @@
 "When She Knows" is a transformative project dedicated to empowering women who are facing psychological abuse. Our platform provides a safe and supportive community where women can connect, share experiences, and find solace amidst the challenges of psychological trauma.
 fully responsive design for the better user interaction
 
-[Hosted Live Link ]: (https://whensheknows.vercel.app/)
+[Hosted Live Link ](https://whensheknows.vercel.app/)
 [Watch the demo video showcasing all functionalities and features](https://youtu.be/1cL-mstM7_o)
 
 ## Features:
