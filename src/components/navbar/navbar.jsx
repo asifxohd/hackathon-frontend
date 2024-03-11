@@ -11,6 +11,7 @@ const Navbar = () => {
     const navigator=useNavigate()
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user);
+    console.log('user',user)
     
     useEffect(() => {
         const handleScroll = () => {
@@ -85,12 +86,13 @@ const Navbar = () => {
                     >
                         Help
                     </span>
-                    <span
+                        {(user)&&(<span
                         onClick={()=>navigator("/consult")}
                         className="text-black mx-4 font-serif font-bold  hover:text-gray-600 cursor-pointer"
                     >
                         Consult
-                    </span>
+                    </span>)
+                        }
                     
 
                 </div>

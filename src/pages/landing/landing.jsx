@@ -47,7 +47,7 @@ const Landing = () => {
                 <p className="text-xl font-serif font-bold text-center">Stories of Wonder Womens</p>
             </div>
 
-            <div className="cards gap-6 flex flex-wrap justify-center items-center ">
+            <div className="cards gap-6 flex flex-wrap justify-center items-center " data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine">
                 {stories.map((prop,ind)=>{
                     return(
                         <StoryCard prop={prop} key={ind} />
@@ -57,8 +57,8 @@ const Landing = () => {
             </div>
 
             <div className="max-sm:flex-col-reverse  flex mb-32 mt-24 md:mx-20">
-                <div className="  max-sm:p-5 max-sm:mt-2 rounded-2xl md:w-2/3  w-full me-2  flex justify-center items-center" style={{backgroundColor:"#B2B377"}} >
-                    <p className="font-serif text-xl md:text-2xl lg:text-4xl text-center p-8" >We are women who are passionate about understanding and preventing psychological abuse. Together, we can make a real difference.</p>
+                <div className="  max-sm:p-5 max-sm:mt-2 rounded-2xl md:w-2/3  w-full me-2  flex justify-center items-center" style={{backgroundColor:"#B2B377"}}  >
+                    <p className="font-serif text-xl md:text-2xl lg:text-4xl text-center p-8" data-aos="fade-right" >We are women who are passionate about understanding and preventing psychological abuse. Together, we can make a real difference.</p>
                 </div>
 
                 <div className="rounded-lg md:w-1/3 w-full" >

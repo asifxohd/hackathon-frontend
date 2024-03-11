@@ -57,6 +57,7 @@ const LoginForm = () => {
             axios
             .post(BASE_URL + "login", data)
             .then((response) => {
+              console.log("response",response);
               if (response.success == 400) {
                 toast.error("Give Proper Credentials");
               } else {
@@ -70,7 +71,7 @@ const LoginForm = () => {
               }
               console.log(response)
             })
-            .catch((error) => toast.error(error));
+            .catch((error) =>{ toast.error(error.response.data.message)});
         } else {
           toast.error(EmailError ? EmailError : PasswordError);
         }
