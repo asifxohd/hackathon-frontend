@@ -37,8 +37,8 @@ To set up the frontend locally, follow these steps:
 1. Clone the repository to your local machine:
 git clone https://github.com/asifxohd/hackathon-frontend.git
 
-2. npm install
-3. cd projec dir
+2. cd projec dir
+3. npm install
 4. npm run dev
 
 Happy coding!
