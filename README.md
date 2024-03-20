@@ -41,4 +41,3 @@ git clone https://github.com/asifxohd/hackathon-frontend.git
 3. npm install
 4. npm run dev
 
-Happy coding!
